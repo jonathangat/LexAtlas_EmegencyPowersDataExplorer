@@ -1,0 +1,31 @@
+{{#each variables}}
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="heading{{@index}}">
+            <button class="accordion-button {{#if @index}}collapsed{{/if}}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{@index}}" aria-expanded="true" aria-controls="collapse{{@index}}">{{@key}}</button>
+        </h2>
+        <div id="collapse{{@index}}" class="accordion-collapse collapse {{#unless @index}}show{{/unless}}" aria-labelledby="heading{{@index}}" data-bs-parent="#accordionContent">
+            <div class="accordion-body">
+                <table class="table">
+                    <tbody>
+                        {{#each this}}
+                            <tr>
+                                <td>
+                                    <strong>{{this.title}}</strong>
+                                    {{#if this.question}}
+                                        <br />
+                                        <small>{{this.question}}</small>
+                                    {{/if}}
+                                </td>
+                                <td>
+                                    {{this.answer}}
+                                </td>
+                            </tr>
+
+
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{{/each}}
